@@ -1,15 +1,15 @@
 from base.base_page import BasePage
-from config.links import Links_360
+from config.links import Links_control
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class LoginPage(BasePage):
+class LoginPageControl(BasePage):
 
-    PAGE_URL = Links_360.LOGIN_PAGE
+    PAGE_URL = Links_control.LOGIN_PAGE
 
     USERNAME_FIELD = ("xpath", "//input[@id='username']")
     PASSWORD_FIELD = ("xpath", "//input[@id='password']")
-    BUTTON_LOGIN = ("xpath", "//button[@aria-label='submit']")
+    BUTTON_LOGIN = ("xpath", "//button[@id='btn-submit']")
 
     def enter_login(self, login):
         self.wait.until(EC.element_to_be_clickable(self.USERNAME_FIELD)).send_keys("")

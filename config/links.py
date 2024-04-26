@@ -1,6 +1,5 @@
 
-
-class Links_360:
+class Links_syncwise360:
 
     HOST = "https://beta.syncwise360.com"
     LOGIN_PAGE = f"{HOST}/login"
@@ -20,3 +19,10 @@ class Links_360:
     PRINTERS_TERMINALS_PAGE = f"{HOST}/printers-terminals"
 
     TOURNAMENTS_PAGE = f"{HOST}/tournaments"
+
+
+class Links_control:
+
+    HOST = "https://control.syncwise360.com"
+    LOGIN_PAGE = f"{HOST}/#login"
+    SUPERIOR_COMPANY_PAGE = f"{HOST}/#company/4442"

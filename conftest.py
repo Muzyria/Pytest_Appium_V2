@@ -21,7 +21,7 @@ def pytest_addoption(parser):
                      help="Choose language: ---")
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="function", autouse=True)
 def driver(request):
     """selenium fixture"""
     print()
@@ -36,6 +36,8 @@ def driver(request):
     chrome_options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+
+    request.cls.driver = driver
     yield driver
     print("\nquit driver..")
     driver.quit()
