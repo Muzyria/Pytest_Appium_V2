@@ -12,10 +12,10 @@ class LoginPageControl(BasePage):
     BUTTON_LOGIN = ("xpath", "//button[@id='btn-submit']")
 
     def enter_login(self, login):
-        self.wait.until(EC.element_to_be_clickable(self.USERNAME_FIELD)).send_keys("")
+        self.wait.until(EC.element_to_be_clickable(self.USERNAME_FIELD)).send_keys(login)
 
     def enter_password(self, password):
-        self.wait.until(EC.element_to_be_clickable(self.PASSWORD_FIELD)).send_keys("")
+        self.wait.until(EC.element_to_be_clickable(self.PASSWORD_FIELD)).send_keys(password)
 
     def click_login_button(self):
         self.wait.until(EC.element_to_be_clickable(self.BUTTON_LOGIN)).click()
