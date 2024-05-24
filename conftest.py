@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from appium import webdriver as appium_webdriver
 
 
-device_name = "192.168.2.31"
+# device_name = "192.168.2.31"
 # device_name = "dbe407da"
 
 
@@ -32,12 +32,14 @@ def driver(request):
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
 
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])  # Убираем лишние ошибки из консоли
+
     user_language = request.config.getoption("language")
     chrome_options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
 
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
-    request.cls.driver = driver
+    request.cls.driver = driver ## не уверен что это надо и как это работает
     yield driver
     print("\nquit driver..")
     driver.quit()
